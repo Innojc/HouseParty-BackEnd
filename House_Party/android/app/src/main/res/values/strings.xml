@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">demofbauth</string>
+    <string name="facebook_app_id">226823139854657</string>
+    <string name="fb_login_protocol_scheme">fb226823139854657</string>
+    <string name="facebook_client_token">a379b84e6d34cafaf48f02e56d1a1f21</string>
+
+
+</resources>
