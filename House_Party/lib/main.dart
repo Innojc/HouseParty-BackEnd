@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:logingoogle/home.dart';
 import 'package:logingoogle/welcome.dart';
 import 'Register.dart';
 import 'login.dart';
@@ -18,6 +19,7 @@ Future<void> main() async {
       'login': (context) => const MyLogin(),
       'welcome': (context) => const welcome(),
       'fb': (context) => const MyApp(),
+      'home': (contect) => Myhome()
     },
   ));
 }
