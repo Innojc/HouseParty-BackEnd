@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:quickalert/quickalert.dart';
 
 
 
@@ -48,7 +49,12 @@ class _MyRegisterState extends State<MyRegister> {
         .whenComplete(() => {print("$customerName Created")});
   }
 
-
+void showAlert(){
+    QuickAlert.show(context: context,
+        title: "Signup",
+        text: "Signup successful",
+        type: QuickAlertType.success);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +203,8 @@ class _MyRegisterState extends State<MyRegister> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      Navigator.pushNamed(context, 'home');
+                                     showAlert();
+                                     //Navigator.pushNamed(context, 'home');
                                       createAccount();
                                     },
                                     icon: const Icon(
@@ -211,7 +218,7 @@ class _MyRegisterState extends State<MyRegister> {
                           ),
 
                           const SizedBox(
-                            height: 60,
+                            height: 30,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -219,7 +226,7 @@ class _MyRegisterState extends State<MyRegister> {
                               OutlinedButton.icon(
                                 icon: const Image(
                                   image: AssetImage('assets/logo.png'),
-                                  width: 40.0,
+                                  width: 50.0,
                                 ),
                                 onPressed: () {
                                   _googleSignIn.signIn().then((userData) {
@@ -250,7 +257,7 @@ class _MyRegisterState extends State<MyRegister> {
                               OutlinedButton.icon(
                                 icon: const Image(
                                   image: AssetImage('assets/fb.jpg'),
-                                  width: 40.0,
+                                  width: 50.0,
                                 ),
                                 onPressed: () {
                                   Navigator.pushNamed(context, 'fb');
