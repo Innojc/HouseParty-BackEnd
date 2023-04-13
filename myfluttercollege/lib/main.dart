@@ -41,9 +41,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   createData() {
-    print("Created");
+
     DocumentReference documentReference =
-        FirebaseFirestore.instance.collection('MyStudents').doc(studentName);
+    FirebaseFirestore.instance.collection('MyStudents').doc(studentName);
 
     //create map
     Map<String, dynamic> students = {
@@ -71,13 +71,29 @@ class _MyAppState extends State<MyApp> {
     });
   }
   updateData() {
-    print("Updated");
+    DocumentReference documentReference =
+    FirebaseFirestore.instance.collection('MyStudents').doc(studentName);
+
+    //create map
+    Map<String, dynamic> students = {
+      "studentName": studentName,
+      "studentID": studentID,
+      "studyProgramID": studyProgramID,
+      "studentGPA": studentGPA
+    };
+
+    documentReference
+        .set(students)
+        .whenComplete(() => {print("$studentName updated")});
   }
 
   deleteData() {
-    print("Deleted");
+    DocumentReference documentReference =
+    FirebaseFirestore.instance.collection('MyStudents').doc(studentName);
+    documentReference.delete().whenComplete((){
+      print("$studentName deleted");
+    });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +112,7 @@ class _MyAppState extends State<MyApp> {
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blue, width: 2.0))),
+                        BorderSide(color: Colors.blue, width: 2.0))),
                 onChanged: (String name) {
                   getStudentName(name);
                 },
@@ -110,7 +126,7 @@ class _MyAppState extends State<MyApp> {
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blue, width: 2.0))),
+                        BorderSide(color: Colors.blue, width: 2.0))),
                 onChanged: (String id) {
                   getStudentID(id);
                 },
@@ -124,7 +140,7 @@ class _MyAppState extends State<MyApp> {
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blue, width: 2.0))),
+                        BorderSide(color: Colors.blue, width: 2.0))),
                 onChanged: (String programID) {
                   getStudyProgramID(programID);
                 },
@@ -138,7 +154,7 @@ class _MyAppState extends State<MyApp> {
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blue, width: 2.0))),
+                        BorderSide(color: Colors.blue, width: 2.0))),
                 onChanged: (String gpa) {
                   getStudentGPA(gpa);
                 },
