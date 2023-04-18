@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:intl/intl.dart';
 import 'package:quickalert/quickalert.dart';
 
 
@@ -43,16 +44,30 @@ class _MyRegisterState extends State<MyRegister> {
       "createpassword": customerPassword,
 
     };
+    DateTime startDate = DateTime.now().toLocal();
+    var date5 = DateFormat.yMMMd().format(startDate);
+    print(date5);
+
+    String tdata = DateFormat("HH:mm:ss").format(DateTime.now());
+    print(tdata);
 
     documentReference
         .set(students)
         .whenComplete(() => {print("$customerName Created")});
   }
+  readAccount() {
+    DocumentReference documentReference =
+    FirebaseFirestore.instance.collection("MyStudents").
+    doc (customerName) ;
+
+    documentReference.get().then((datasnapshot) {
+      print(datasnapshot.data());
+    });
+  }
 
 void showAlert(){
     QuickAlert.show(context: context,
-        title: "Signup",
-        text: "Signup successful",
+        title: "Signup Successful",
         type: QuickAlertType.success);
 }
 

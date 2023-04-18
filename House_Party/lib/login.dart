@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
@@ -33,10 +34,16 @@ class _MyLoginState extends State<MyLogin> {
       "email": UserEmail,
       "createpassword": UserPassword,
     };
+    DateTime startDate = DateTime.now().toLocal();
+    var date5 = DateFormat.yMMMd().format(startDate);
+    print(date5);
+
+    String tdata = DateFormat("HH:mm:ss").format(DateTime.now());
+    print(tdata);
 
     documentReference
         .set(students)
-        .whenComplete(() => {print("$UserEmail Created")});
+        .whenComplete(() => {print("$UserEmail Login Successful")});
 
   }
 
@@ -193,8 +200,7 @@ class _MyLoginState extends State<MyLogin> {
 
   void showAlert() {
     QuickAlert.show(context: context,
-        title: "Login",
-        text: "Login successful",
+        title: "Login Successful",
         type: QuickAlertType.success);
   }
 }

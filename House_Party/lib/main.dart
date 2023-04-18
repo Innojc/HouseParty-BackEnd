@@ -6,6 +6,7 @@ import 'package:logingoogle/home.dart';
 import 'package:logingoogle/welcome.dart';
 import 'Register.dart';
 import 'login.dart';
+import 'dart:async';
 
 
 Future<void> main() async {
@@ -125,5 +126,95 @@ class _MyAppState extends State<MyApp> {
             )),
       ),
     );
+  }
+}
+final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+
+void main1() {
+  runApp(MaterialApp(
+      theme: ThemeData.light().copyWith(scaffoldBackgroundColor: darkBlue),
+      debugShowCheckedModeBanner: false,
+      home: TimeStampClock()));
+}
+
+class TimeStampClock extends StatefulWidget {
+  @override
+  ClockState createState() => ClockState();
+}
+
+class ClockState extends State<TimeStampClock> {
+  late DateTime now;
+  late String strTime;
+  List<String> timeStamps = [];
+
+  @override
+  void initState() {
+    super.initState();
+    now = DateTime.now();
+    strTime = timeToString(now);
+
+    new Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        now = DateTime.now();
+        strTime = timeToString(now);
+      });
+    });
+  }
+
+  String timeToString(DateTime time) {
+    return "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}:${time.second.toString().padLeft(2, '0')}";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Timer App'),
+        ),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+                flex: 3,
+                child: InkWell(
+                  onTap: () {
+                    timeStamps.add(strTime);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text("$strTime",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        )),
+                  ),
+                )),
+            Expanded(
+                flex: 7,
+                child: ListView.builder(
+                    itemCount: timeStamps.length,
+                    itemBuilder: (context, idx) {
+                      return InkWell(
+                          child: Card(
+                              color: Colors.white70,
+                              child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 24.0, horizontal: 16.0),
+                                  child: Text(
+                                      "${timeStamps[timeStamps.length - idx - 1]}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      )))),
+                          onTap: () {
+                            timeStamps.removeAt(timeStamps.length - idx - 1);
+                          });
+                    })),
+          ],
+        ));
   }
 }
