@@ -63,11 +63,8 @@ class _MyAppState extends State<MyApp> {
     FirebaseFirestore.instance.collection("MyStudents").
     doc (studentName) ;
 
-    documentReference.get().then((value) =>(datasnapshot) {
-      print(datasnapshot.data["studentName"]);
-      print(datasnapshot.data["studentID"]);
-      print(datasnapshot.data["studyProgramID"]);
-      print(datasnapshot.data["studentGPA"]);
+    documentReference.get().then((datasnapshot) {
+      print(datasnapshot.data());
     });
   }
   updateData() {
