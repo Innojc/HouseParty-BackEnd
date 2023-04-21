@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "347640403612",
+    "project_id": "houseparty3636",
+    "storage_bucket": "houseparty3636.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347640403612:android:e73da9b71735be5bfbff59",
+        "android_client_info": {
+          "package_name": "com.example.flutterfiredemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347640403612-1n1unuabmkipcclcdnriboda5aa03521.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNFhQK5WYFNWns8KQ3DYU61xzpV0ud7eU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347640403612-1n1unuabmkipcclcdnriboda5aa03521.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "347640403612-0haj6m4nhatnv0gr7drdmaobni2vh3qp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterfiredemo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
