@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "511730909425",
+    "project_id": "venkat-1010",
+    "storage_bucket": "venkat-1010.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511730909425:android:c276947fa5759aebeaa950",
+        "android_client_info": {
+          "package_name": "com.example.fetching_data"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511730909425-2i0ghuuu9uqhfknh4lfifjdaoeqbigq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl_Dftegze9O0uPNKhfH2LzbRHJfASnKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511730909425-2i0ghuuu9uqhfknh4lfifjdaoeqbigq7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
